@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Endeavour Mining · Mesurer l'Expert recrutement</title>
+<link rel="icon" href="assets/favicon.png">
+<link rel="stylesheet" href="assets/style.css?v=20261120a">
+</head>
+<body>
+<header class="top">
+  <div class="wrap top-in">
+    <img class="logo" src="assets/logo_acier.png" alt="Endeavour Mining">
+    <div class="top-r">
+      <span class="demo" data-t="demo"></span>
+      <div class="lang"><button data-l="fr" class="on">FR</button><button data-l="en">EN</button></div>
+    </div>
+  </div>
+</header>
+<section class="hero">
+  <div class="wrap">
+    <p class="kicker" data-t="kicker"></p>
+    <h1 data-t="h1"></h1>
+    <p class="q"><span class="qm">“</span><span data-t="question"></span><span class="who" data-t="who"></span></p>
+  </div>
+</section>
+<nav class="tabs-w"><div class="wrap tabs">
+  <button data-v="rec" class="on"><i data-i="briefcase"></i><span data-t="t1"></span></button>
+  <button data-v="exp"><i data-i="sparkles"></i><span data-t="t2"></span></button>
+  <button data-v="qual"><i data-i="badge-check"></i><span data-t="t3"></span></button>
+</div></nav>
+<main class="wrap">
+
+<section class="view on" id="v-rec">
+  <p class="lead"><i data-i="target"></i><span data-t="lead1"></span></p>
+  <div class="kpis" id="k-rec"></div>
+  <div class="grid g2">
+    <div class="card"><h3 data-t="c_delai"></h3><p class="sub" data-t="c_delai_s"></p><div class="ch"><canvas id="ch-delai"></canvas></div></div>
+    <div class="card"><h3 data-t="c_funnel"></h3><p class="sub" data-t="c_funnel_s"></p><div id="funnel"></div></div>
+  </div>
+  <div class="card"><h3 data-t="c_etapes"></h3><p class="sub" data-t="c_etapes_s"></p><div id="etapes"></div></div>
+  <div class="card"><h3 data-t="c_flux"></h3><p class="sub" data-t="c_flux_s"></p><div class="ch"><canvas id="ch-flux"></canvas></div></div>
+</section>
+
+<section class="view" id="v-exp">
+  <p class="lead"><i data-i="target"></i><span data-t="lead2"></span></p>
+  <div class="kpis" id="k-exp"></div>
+  <div class="grid g2">
+    <div class="card"><h3 data-t="c_liv"></h3><p class="sub" data-t="c_liv_s"></p><div class="ch"><canvas id="ch-liv"></canvas></div></div>
+    <div class="card"><h3 data-t="c_h"></h3><p class="sub" data-t="c_h_s"></p><div class="ch"><canvas id="ch-h"></canvas></div></div>
+  </div>
+  <div class="grid g2">
+    <div class="card"><h3 data-t="c_rout"></h3><p class="sub" data-t="c_rout_s"></p><div id="routines"></div></div>
+    <div class="card"><h3 data-t="c_rep"></h3><p class="sub" data-t="c_rep_s"></p><div class="ch sm"><canvas id="ch-rep"></canvas></div></div>
+  </div>
+</section>
+
+<section class="view" id="v-qual">
+  <p class="lead"><i data-i="target"></i><span data-t="lead3"></span></p>
+  <div class="kpis" id="k-qual"></div>
+  <div class="grid g2">
+    <div class="card"><h3 data-t="c_ech"></h3><p class="sub" data-t="c_ech_s"></p><div class="ch"><canvas id="ch-ech"></canvas></div></div>
+    <div class="card"><h3 data-t="c_jour"></h3><p class="sub" data-t="c_jour_s"></p><div id="journal"></div></div>
+  </div>
+  <div class="card"><h3 data-t="c_reg"></h3><p class="sub" data-t="c_reg_s"></p><div class="legend3"><span class="m seul" data-t="m_seul"></span><span class="m valid" data-t="m_valid"></span><span class="m jamais" data-t="m_jamais"></span></div><div id="reglage"></div></div>
+</section>
+
+<footer class="foot"><span data-t="foot"></span></footer>
+</main>
+<script src="assets/chart.umd.min.js"></script>
+<script src="assets/icons.js?v=20261120a"></script>
+<script src="assets/data.js?v=20261120a"></script>
+<script src="assets/app.js?v=20261120a"></script>
+</body>
+</html>
