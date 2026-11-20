@@ -16,8 +16,8 @@ fr: {
  k_postes: 'Postes ouverts', k_postes_d: `dont ${last(R.managers)} postes de manager`,
  k_src: 'Candidats sourcés', k_src_d: `<span class="up">+${Math.round(100*(last(R.sources)/R.sources[0]-1))} %</span> en 8 semaines`, k_week: 'cette semaine',
  k_ent: 'Entretiens', k_ent_d: `${K.entretiens_tot} sur 8 semaines`,
- k_del: 'Délai pour pourvoir', k_del_d: `<span class="up">−${R.delai_ref - last(R.delai)} j</span> vs les 6 mois avant `, j: 'j',
- c_delai: 'Délai pour pourvoir un poste', c_delai_s: 'Jours entre l’ouverture et l’acceptation de l’offre, moyenne glissante', ref: 'Moyenne des 6 mois avant',
+ k_del: 'Délai pour pourvoir', k_del_d: `<span class="up">−${R.delai[0] - last(R.delai)} j</span> en 8 semaines (${R.delai[0]} → ${last(R.delai)}) `, j: 'j',
+ c_delai: 'Délai pour pourvoir un poste', c_delai_s: 'Jours entre l’ouverture et l’acceptation de l’offre, moyenne glissante', ref: 'Point de départ (semaine 1)',
  c_funnel: 'Du sourcing à l’embauche', c_funnel_s: 'Cumul des 8 semaines', f: ['Candidats sourcés', 'Présélectionnés', 'Entretiens', 'Offres', 'Embauches'],
  c_etapes: 'Temps passé par étape', c_etapes_s: 'Durée médiane en jours, avant l’Expert et aujourd’hui', avant: 'Avant l’Expert', auj: 'Aujourd’hui', aujh: 'Aujourd’hui, étape restée humaine', gain: 'gagnés', inch: 'inchangé', jours: 'jours', hum: 'reste à l’équipe',
  c_flux: 'Le flux chaque semaine', c_flux_s: 'Candidats sourcés, entretiens et postes ouverts', l_src: 'Candidats sourcés', l_ent: 'Entretiens', l_post: 'Postes ouverts',
@@ -52,8 +52,8 @@ en: {
  k_postes: 'Open roles', k_postes_d: `including ${last(R.managers)} manager roles`,
  k_src: 'Candidates sourced', k_src_d: `<span class="up">+${Math.round(100*(last(R.sources)/R.sources[0]-1))}%</span> in 8 weeks`, k_week: 'this week',
  k_ent: 'Interviews', k_ent_d: `${K.entretiens_tot} over 8 weeks`,
- k_del: 'Time to fill', k_del_d: `<span class="up">−${R.delai_ref - last(R.delai)} d</span> vs prior 6 months `, j: 'd',
- c_delai: 'Time to fill a role', c_delai_s: 'Days from opening to offer acceptance, rolling average', ref: 'Prior 6-month average',
+ k_del: 'Time to fill', k_del_d: `<span class="up">−${R.delai[0] - last(R.delai)} d</span> in 8 weeks (${R.delai[0]} → ${last(R.delai)}) `, j: 'd',
+ c_delai: 'Time to fill a role', c_delai_s: 'Days from opening to offer acceptance, rolling average', ref: 'Starting point (week 1)',
  c_funnel: 'From sourcing to hire', c_funnel_s: 'Total over 8 weeks', f: ['Candidates sourced', 'Shortlisted', 'Interviews', 'Offers', 'Hires'],
  c_etapes: 'Time spent per stage', c_etapes_s: 'Median duration in days, before the Expert and today', avant: 'Before the Expert', auj: 'Today', aujh: 'Today, stage kept human', gain: 'saved', inch: 'unchanged', jours: 'days', hum: 'stays with the team',
  c_flux: 'Weekly flow', c_flux_s: 'Candidates sourced, interviews and open roles', l_src: 'Candidates sourced', l_ent: 'Interviews', l_post: 'Open roles',
@@ -102,7 +102,7 @@ function render() {
   kpi('hourglass', t.k_del, last(R.delai), t.j, t.k_del_d);
  mk('ch-delai', { type: 'line', data: { labels: W, datasets: [
   { label: t.c_delai, data: R.delai, borderColor: C.orange, backgroundColor: 'rgba(239,99,26,.10)', fill: true, tension: .3, pointRadius: 3, borderWidth: 2.5 },
-  { label: t.ref, data: W.map(() => R.delai_ref), borderColor: C.steel, borderDash: [5, 4], pointRadius: 0, borderWidth: 1.5 }] },
+  { label: t.ref, data: W.map(() => R.delai[0]), borderColor: C.steel, borderDash: [5, 4], pointRadius: 0, borderWidth: 1.5 }] },
   options: { scales: { y: { min: 30, max: 60, grid }, x: { grid: nog } } } });
  const fv = [K.sources_tot, K.preselec_tot, K.entretiens_tot, K.offres_tot, K.embauches_tot];
  document.getElementById('funnel').innerHTML = fv.map((v, i) => `<div class="fn"><div class="lb">${t.f[i]}${i ? `<small>${(100 * v / fv[i - 1]).toFixed(i > 2 ? 0 : 0)} %</small>` : ''}</div><div class="bar"><i style="width:${Math.max(2.5, 100 * Math.sqrt(v / fv[0]))}%"></i></div><div class="n">${nf(v, L)}</div></div>`).join('');
